@@ -36,8 +36,8 @@ Unlike static rule files, this framework becomes smarter over time:
 
 | Mechanism | What Happens |
 |-----------|-------------|
-| `LEARNED.md` | AI appends discovered patterns and gotchas |
-| `decisions/` | AI records architecture decisions to avoid repetition |
+| `LEARNED.md` | AI records reusable conventions, gotchas, provider quirks, and testing patterns |
+| `decisions/` | AI records durable technical decisions with lasting trade-offs |
 | `sessions.md` | AI keeps short handoffs only when continuity matters |
 | `completed.md` | AI records the canonical list of finished tasks |
 | `tasks/` | AI tracks active, pending, and completed work without duplicating logs |

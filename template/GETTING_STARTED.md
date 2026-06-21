@@ -199,12 +199,25 @@ The framework becomes smarter over time:
 
 | File | Growth Mechanism |
 |------|-----------------|
-| `.ai/rules/LEARNED.md` | AI appends project-specific patterns as they are discovered |
-| `.ai/decisions/` | AI records architecture decisions to avoid repetition |
+| `.ai/rules/LEARNED.md` | AI records reusable conventions, gotchas, provider quirks, and testing patterns |
+| `.ai/decisions/` | AI records durable technical decisions with lasting trade-offs |
 | `.ai/tasks/sessions.md` | AI writes short handoffs only when continuity matters |
 | `.ai/tasks/current.md` | AI keeps active task state only; completed work is cleared from it |
 | `.ai/tasks/completed.md` | AI records finished tasks as the canonical completion ledger |
 | `.ai/skills/` | You add optional playbooks when recurring specialized workflows appear |
+
+### Long-Term Memory Rules
+
+The AI should promote durable knowledge out of task logs:
+
+| If The Work Creates | It Should Update |
+|---------------------|------------------|
+| Architecture, API, data, auth, provider, cache, CI, deployment, or cross-cutting contract decision | `.ai/decisions/` |
+| Reusable convention, gotcha, provider quirk, testing pattern, performance/security note, or local tooling constraint | `.ai/rules/LEARNED.md` |
+| Stack, runtime, framework, auth, database, or standard change | `.ai/config.json` |
+| Dependency, external service, env var, port, secret name, or command change | `.ai/ref/` |
+
+`sessions.md` is not long-term memory. It should contain only short handoffs for continuity.
 
 ---
 

@@ -10,7 +10,7 @@
     "tier3OnDemand": 1000
   },
   "rules": {
-    "maxLearnedLines": 50,
+    "maxLearnedEntries": 50,
     "maxSessionsEntries": 15,
     "sessionsRetention": "latest-only"
   }

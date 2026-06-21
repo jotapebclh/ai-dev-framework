@@ -269,9 +269,9 @@ Ensure at least one test passes (create a trivial test if none exists).
 
 ### Step 5.1 — Record Architecture Decisions
 
-Ask the user: "Do you want me to record the decisions we made?"
+Record the accepted foundational decisions as ADRs. Do not ask whether to record them; ask only if a decision is still unclear.
 
-If yes, create ADRs in `.ai/decisions/`:
+Create ADRs in `.ai/decisions/`:
 - `ADR-001: Language and framework choice`
 - `ADR-002: Database choice`
 - `ADR-003: Project structure`
@@ -293,7 +293,7 @@ If yes, create ADRs in `.ai/decisions/`:
 
 **Blockers:** None.
 
-**State:** branch `main`; ADRs created for stack, database, and structure if requested.
+**State:** branch `main`; ADRs created for stack, database, and structure.
 ```
 
 ### Step 5.3 — Present Summary

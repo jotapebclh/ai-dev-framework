@@ -66,7 +66,7 @@
 - [ ] Optimization verified with measurements
 - [ ] No regression in correctness (tests pass)
 - [ ] Trade-off documented (e.g., memory vs speed)
-- [ ] Added to LEARNED.md if pattern might repeat
+- [ ] Added to LEARNED.md if the observation should guide future optimization
 
 ## References
 

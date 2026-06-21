@@ -23,7 +23,7 @@
 5. Identify root cause — the underlying bug, not just the symptom
 6. Fix — minimal change that addresses the root cause
 7. Verify — test the fix, check for regressions
-8. Document — add gotcha to `.ai/rules/LEARNED.md` if it's a recurring pattern
+8. Document — add a gotcha to `.ai/rules/LEARNED.md` if future work should avoid rediscovering it
 
 ## Output Format
 
@@ -47,7 +47,7 @@
 - [ ] Fix is minimal — no scope creep
 - [ ] Regression test added
 - [ ] Similar patterns checked elsewhere in the codebase
-- [ ] If recurring, recorded in LEARNED.md
+- [ ] If reusable, recorded in LEARNED.md
 
 ## References
 

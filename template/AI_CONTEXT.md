@@ -47,8 +47,8 @@ If the user names a skill, load that skill file directly. Otherwise, read @.ai/s
 ### Tier 3 — On Demand
 Load only when needed:
 - `.ai/tasks/sessions.md` — read **last handoff only** when continuing prior work
-- `.ai/rules/LEARNED.md` — consult before making design decisions
-- `.ai/decisions/` — consult before making architecture decisions
+- `.ai/rules/LEARNED.md` — consult before changing established patterns or investigating recurring behavior
+- `.ai/decisions/` — consult before making or revising durable technical decisions
 - `.ai/ref/env.md` — when dealing with environment/configuration
 - `.ai/tasks/backlog.md` — when planning or prioritizing
 - `.ai/tasks/completed.md` — source of truth for completed tasks
@@ -79,8 +79,39 @@ Load only when needed:
    - Focus/request in one line
    - Outcome in one line, with a reference to `completed.md` if completed
    - Next step and blockers
-4. If a recurring pattern was discovered, append to `.ai/rules/LEARNED.md`
-5. If a significant architecture decision was made, create a file in `.ai/decisions/`
+4. Run the Long-Term Memory Check below. Promote durable knowledge to `LEARNED.md`, `decisions/`, `.ai/config.json`, or `.ai/ref/` as appropriate.
+5. Do not leave durable decisions only in `sessions.md`; handoffs are short-lived.
+
+---
+
+## Long-Term Memory Protocol
+
+At the end of every medium, large, risky, or multi-session task, ask: "Will this change how future work should be done?" If yes, promote it out of the task logs.
+
+Use this routing table:
+
+| Memory Type | Store In | Promote When |
+|-------------|----------|--------------|
+| Durable decision | `.ai/decisions/ADR-NNN-*.md` and `.ai/decisions/INDEX.md` | Architecture, API contract, data model, migration strategy, auth/security model, external integration/provider, cache/consistency strategy, CI/toolchain, deployment, or cross-cutting frontend/backend contract changes. |
+| Reusable lesson | `.ai/rules/LEARNED.md` | Project convention, gotcha, provider/API quirk, testing pattern, validation rule, performance/security note, local tooling constraint, or any fact that would save future rediscovery. |
+| Project identity or stack | `.ai/config.json` | Language, runtime, framework, package manager, test/lint tools, architecture summary, auth, database, or standards change. |
+| Operational reference | `.ai/ref/dependencies.md` or `.ai/ref/env.md` | Dependency/version, external service, endpoint, environment variable, port, secret name, or command changes. |
+| Task history only | `.ai/tasks/completed.md` | One-off implementation detail that does not guide future decisions. |
+
+Promotion rules:
+- Do not wait for a second occurrence if a gotcha or convention is likely to recur.
+- Keep `LEARNED.md` entries to 1 line when possible: lesson, context/path, date.
+- Create ADRs for decisions with lasting trade-offs, even if they were made during implementation rather than upfront design.
+- Ask the user only when the decision itself is unclear. Do not ask whether to record an already accepted significant decision.
+- When memory is promoted, mention it briefly in the final response: `Memory updated: LEARNED.md` or `Memory updated: ADR-002`.
+- If nothing should be promoted, do nothing; do not write "no memory updates" to files.
+
+Examples that should be promoted:
+- A provider has a free-tier date range limit or unusual response shape.
+- The service layer owns period validation so handlers and internal callers share limits.
+- Integration tests require Docker Compose services and an opt-in flag.
+- A dashboard endpoint intentionally avoids provider fan-out for predictable latency.
+- Password reset tokens are hashed and raw tokens are exposed only in local development.
 
 ---
 
@@ -168,7 +199,7 @@ Never paste diffs, stack traces, or long explanations into task logs. Reference 
 2. **Never repeat past decisions** — check `.ai/decisions/` before choosing
 3. **Never store secrets in code** — use environment variables
 4. **Keep task files accurate and compact** — update after meaningful milestones only
-5. **If LEARNED.md exceeds 50 lines**, compress older entries into a compact digest using this format:
+5. **If LEARNED.md exceeds 50 active learned entries**, compress older entries into a compact digest using this format:
 
    ```
    ### Conventions (M/D)

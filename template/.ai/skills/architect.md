@@ -22,7 +22,7 @@
 3. Propose architecture options with trade-offs
 4. Evaluate each option against the drivers
 5. Recommend the best option with rationale
-6. Document the decision as an ADR in `.ai/decisions/`
+6. Document the decision as an ADR when it matches `.ai/decisions/INDEX.md` criteria
 
 ## Output Format
 
@@ -60,11 +60,11 @@ Use the template at `.ai/decisions/000-template.md`.
 - [ ] At least 2 alternatives considered (not just the first idea)
 - [ ] Non-functional requirements addressed (performance, security, cost)
 - [ ] Trade-offs explicitly documented
-- [ ] ADR created for significant decisions
+- [ ] ADR created for decisions matching `.ai/decisions/INDEX.md` criteria
 - [ ] Decision aligns with project constraints
 
 ## References
 
 - `.ai/rules/ARCHITECTURE.md`
-- `.ai/decisions/` (review existing decisions first)
+- `.ai/decisions/INDEX.md` (review existing decisions and ADR criteria first)
 - `.ai/ref/dependencies.md`

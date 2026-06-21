@@ -1,21 +1,30 @@
 # Learned Patterns
 
-This file grows with the project. The AI appends project-specific patterns, gotchas, and conventions as they are discovered.
+This file stores reusable project knowledge that should influence future work. It is not a changelog.
 
 ---
 
 ## How This File Works
 
-- When you discover a recurring pattern or gotcha, append it to the relevant section below
+- When you discover a convention, gotcha, provider quirk, testing pattern, or operational constraint that future work should remember, append it to the relevant section below
+- Do not wait for recurrence if rediscovering the fact would cost time or risk a bug
 - If no section fits, create a new one
-- If this file exceeds **50 lines**, summarize older entries into the digest at the top
-- Check this file before making design or implementation decisions
+- If this file exceeds **50 active learned entries**, summarize older entries into the digest at the top
+- Check this file before changing established patterns or investigating similar behavior
+
+Entry format:
+
+```markdown
+- Lesson or constraint in one sentence. Context: `path/or/module`. Date: YYYY-MM-DD.
+```
+
+Do not add task-completion notes, long explanations, diffs, or one-off implementation details.
 
 ---
 
 ## Digest
 
-*Summarized history of older entries. Updated automatically when this file exceeds 50 lines. Format:*
+*Summarized history of older entries. Updated when this file exceeds 50 active learned entries. Format:*
 
 ```
 ### Conventions (M/D)
@@ -34,17 +43,22 @@ This file grows with the project. The AI appends project-specific patterns, gotc
 
 ## Project-Specific Conventions
 
-<!-- e.g., "We use React Query for all server state. No useEffect for data fetching." -->
+<!-- e.g., "Service-layer validation owns date range limits so handlers and internal callers share behavior. Context: `internal/indicators`. Date: YYYY-MM-DD." -->
 
 
 ## Recurring Gotchas
 
-<!-- e.g., "The Stripe webhook signature verification fails in staging because the webhook secret is not synced." -->
+<!-- e.g., "Provider X free tier returns only the last 365 days. Context: `internal/providers`. Date: YYYY-MM-DD." -->
 
 
 ## Patterns Discovered
 
-<!-- e.g., "All file exports go through an index.ts barrel file per module." -->
+<!-- e.g., "External provider values are normalized before persistence and cache writes. Context: `internal/indicators`. Date: YYYY-MM-DD." -->
+
+
+## Integration and API Notes
+
+<!-- e.g., "Dashboard endpoints should avoid provider fan-out unless explicitly designed as best-effort refresh. Context: `/dashboard/summary`. Date: YYYY-MM-DD." -->
 
 
 ## Performance Observations
@@ -59,4 +73,4 @@ This file grows with the project. The AI appends project-specific patterns, gotc
 
 ## Testing Patterns
 
-<!-- e.g., "Mock the Stripe SDK at the boundary. Use test mode API keys for integration tests." -->
+<!-- e.g., "Integration tests require Docker Compose services and an opt-in flag to avoid accidental runs. Context: `make test-integration`. Date: YYYY-MM-DD." -->
