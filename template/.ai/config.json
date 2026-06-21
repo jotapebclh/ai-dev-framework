@@ -1,0 +1,29 @@
+{
+  "$schema": "./config.schema.json",
+  "project": {
+    "name": "",
+    "description": "",
+    "language": "",
+    "runtime": "",
+    "framework": "",
+    "packageManager": "",
+    "testFramework": "",
+    "lintTool": ""
+  },
+  "architecture": {
+    "pattern": "",
+    "database": "",
+    "auth": ""
+  },
+  "links": {
+    "docs": "",
+    "api": "",
+    "dbSchema": ""
+  },
+  "standards": {
+    "languageConventions": "",
+    "formatting": "",
+    "testing": "",
+    "notes": ""
+  }
+}

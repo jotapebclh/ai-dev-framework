@@ -1,0 +1,61 @@
+# Files and patterns for the AI to ignore
+# These are not relevant for understanding the project
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+vendor/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Build output
+dist/
+build/
+.next/
+out/
+target/
+*.bundle.*
+*.min.*
+
+# Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+poetry.lock
+Cargo.lock
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large generated files
+*.generated.*
+*.bundle.*
+coverage/
+cypress/videos/
+cypress/screenshots/
+
+# Git
+.git/
+.gitignore

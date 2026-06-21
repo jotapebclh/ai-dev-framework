@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Development Framework Config",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "language": { "type": "string" },
+        "runtime": { "type": "string" },
+        "framework": { "type": "string" },
+        "packageManager": { "type": "string" },
+        "testFramework": { "type": "string" },
+        "lintTool": { "type": "string" }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "pattern": { "type": "string" },
+        "database": { "type": "string" },
+        "auth": { "type": "string" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "docs": { "type": "string" },
+        "api": { "type": "string" },
+        "dbSchema": { "type": "string" }
+      }
+    },
+    "standards": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "languageConventions": { "type": "string" },
+        "formatting": { "type": "string" },
+        "testing": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

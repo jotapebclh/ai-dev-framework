@@ -1,0 +1,22 @@
+{
+  "project": {
+    "name": "my-web-app",
+    "description": "Next.js application with TypeScript and Prisma",
+    "language": "TypeScript",
+    "runtime": "Node.js 20",
+    "framework": "Next.js 14 (App Router)",
+    "packageManager": "pnpm",
+    "testFramework": "Vitest",
+    "lintTool": "ESLint + Prettier"
+  },
+  "architecture": {
+    "pattern": "Feature-based folders with shared lib",
+    "database": "PostgreSQL 16 via Prisma ORM",
+    "auth": "NextAuth.js v5"
+  },
+  "links": {
+    "docs": "https://nextjs.org/docs",
+    "api": "https://api.example.com",
+    "dbSchema": "prisma/schema.prisma"
+  }
+}

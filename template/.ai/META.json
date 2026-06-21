@@ -1,0 +1,17 @@
+{
+  "framework": {
+    "name": "AI Development Framework",
+    "version": "1.0.0",
+    "website": ""
+  },
+  "tokenBudget": {
+    "tier1AlwaysOn": 2000,
+    "tier2PerRule": 1500,
+    "tier3OnDemand": 1000
+  },
+  "rules": {
+    "maxLearnedLines": 50,
+    "maxSessionsEntries": 15,
+    "sessionsRetention": "latest-only"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "project": {
+    "name": "my-api",
+    "description": "FastAPI backend with SQLAlchemy and Celery",
+    "language": "Python 3.12",
+    "runtime": "Python 3.12",
+    "framework": "FastAPI",
+    "packageManager": "poetry",
+    "testFramework": "pytest",
+    "lintTool": "ruff + mypy"
+  },
+  "architecture": {
+    "pattern": "Clean Architecture (repository + service layer)",
+    "database": "PostgreSQL 16 via SQLAlchemy 2.0 + Alembic",
+    "auth": "JWT via python-jose + passlib"
+  },
+  "links": {
+    "docs": "https://fastapi.tiangolo.com",
+    "api": "https://api.example.com/docs",
+    "dbSchema": "alembic/versions/"
+  }
+}
