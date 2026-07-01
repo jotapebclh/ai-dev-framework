@@ -29,4 +29,4 @@ Optional playbooks for specialized tasks. Do not load a skill for routine work w
 
 ## Creating New Skills
 
-See the [template](_template.md) and [GETTING_STARTED.md](../../GETTING_STARTED.md) for instructions.
+See the [template](_template.md) and [FRAMEWORK_GUIDE.md](../FRAMEWORK_GUIDE.md) for instructions.

@@ -47,9 +47,9 @@ Unlike static rule files, this framework becomes smarter over time:
 ```
 project/
 ├── AI_CONTEXT.md                 # Entry point — instructs the AI
-├── GETTING_STARTED.md            # Instructions for you
 │
 └── .ai/
+    ├── FRAMEWORK_GUIDE.md        # Framework usage guide
     ├── config.json               # [EDIT] Project metadata
     ├── config.schema.json        # Minimal schema for config validation
     ├── META.json                 # Framework version & token budgets

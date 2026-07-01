@@ -1,6 +1,6 @@
-# Getting Started — AI Development Framework
+# Framework Guide — AI Development Framework
 
-This framework optimizes your project for AI-assisted development. Copy it to any project to give AI agents the context they need to work effectively.
+This guide explains the AI Development Framework files installed under `.ai/`. Keep project-specific onboarding in the project's own `README.md` or getting-started guide.
 
 ---
 
