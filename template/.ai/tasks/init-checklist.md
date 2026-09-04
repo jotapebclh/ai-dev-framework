@@ -84,6 +84,22 @@ Ask about: deployment target (serverless, container, VPS), team size, ecosystem 
 
 Recommend other Package Managers if requested, based on language, but follow the same structure.
 
+### Step 1.6 — Choose Docker and Reload Strategy
+
+Ask whether the project will use Docker or Docker Compose for local development.
+
+If the answer is no, record `Not configured` in `.ai/config.json` under `devEnvironment.containerization`, record `Not applicable` under `devEnvironment.reloadStrategy`, and continue.
+
+If the answer is yes, ask which reload strategy should be used:
+
+| Strategy | Best For | Trade-offs |
+|----------|----------|------------|
+| Automatic restart/reload after changes | Simple container workflows where startup is fast | More disruptive; can restart services more often than necessary |
+| Live code reload on source changes | Fast local feedback while editing source files | Requires bind mounts, watch mode, or polling configuration |
+| Hybrid (recommended) | Most Dockerized development environments | Uses live reload for source changes and restart/rebuild only for dependencies, Dockerfile, or env changes |
+
+Record the choice in `.ai/config.json` under `devEnvironment.reloadStrategy`. Do not assume hot reload just because Docker is selected.
+
 ---
 
 ## Phase 2: Development Tooling
@@ -179,6 +195,8 @@ Fill in:
 - `architecture.pattern` — from Phase 3
 - `architecture.database` — from Step 1.4
 - `architecture.auth` — ask user: "What auth strategy?" (JWT, sessions, OAuth, NextAuth, etc.)
+- `devEnvironment.containerization` — from Step 1.6
+- `devEnvironment.reloadStrategy` — from Step 1.6
 - `project.packageManager` — from Step 1.5
 - `project.testFramework` — from Step 2.2
 - `project.lintTool` — from Step 2.1
@@ -210,6 +228,9 @@ Check that the necessary runtimes and tools are installed on the system. Ask the
 node --version
 npm --version  # or pnpm --version / yarn --version / python --version / go version
 git --version
+# If Docker or Docker Compose was selected:
+docker --version
+docker compose version
 ```
 
 Do NOT proceed until all required tools are confirmed available.
@@ -236,6 +257,8 @@ Generate the minimal files needed to verify the project works:
 - Main entry point (e.g., `src/index.ts` with a hello world health check)
 - Basic config file (e.g., `tsconfig.json`, `vitest.config.ts`)
 - `.env.example` with placeholder values
+
+If Docker was selected, create the minimal Docker files required for the chosen reload strategy. For live reload, configure source mounts and framework watch mode. For automatic restart/reload, configure the selected watcher or Compose behavior so the environment refreshes consistently after changes.
 
 ### Step 4.3 — Verify It Builds
 
@@ -278,9 +301,10 @@ Create ADRs in `.ai/decisions/`:
 
 ### Step 5.2 — Initialize Task Tracking
 
-- Append the project init completion to `.ai/tasks/completed.md`
+- If user validation is still pending, set `.ai/tasks/current.md` to `Validation` with what changed and what to test
+- Append the project init completion to `.ai/tasks/completed.md` only after validation/testing is explicitly complete
 - Create initial backlog with user's feature ideas
-- Write a short first handoff in `.ai/tasks/sessions.md`:
+- Write a short first handoff in `.ai/tasks/sessions.md`. Use `Completed` only after validation/testing is complete; otherwise use `Validation` and point to `current.md`:
 
 ```
 ## YYYY-MM-DD — Project init
@@ -305,6 +329,7 @@ Show the user a summary of what was created:
 
 - **Stack:** <language> + <framework> + <database>
 - **Structure:** <chosen structure>
+- **Dev environment:** <containerization and reload strategy>
 - **Tools:** <linter>, <formatter>, <test framework>
 - **CI/CD:** Not configured yet
 - **Deploy:** Not configured yet

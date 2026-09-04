@@ -11,6 +11,7 @@
 
 - CI/CD pipeline configuration and optimization
 - Docker containerization and orchestration
+- Docker reload/restart behavior for local development
 - Infrastructure as Code (Terraform, Pulumi, CloudFormation)
 - Deployment strategies (blue-green, canary, rolling)
 - Environment parity (dev, staging, production)
@@ -21,11 +22,12 @@
 
 1. Understand the deployment target (cloud provider, on-prem, serverless)
 2. Review current CI/CD configuration
-3. Check environment variable configuration in `.ai/ref/env.md`
-4. Ensure secrets are managed properly (not in config files)
-5. Verify infrastructure changes are idempotent
-6. Test deployment in lower environments first
-7. Document the deployment process
+3. Check `.ai/config.json` for `devEnvironment.containerization` and `devEnvironment.reloadStrategy`
+4. Check environment variable configuration in `.ai/ref/env.md`
+5. Ensure secrets are managed properly (not in config files)
+6. Verify infrastructure changes are idempotent
+7. Test deployment in lower environments first
+8. Document the deployment process
 
 ## Output Format
 
@@ -62,6 +64,7 @@
 
 - [ ] Idempotent — running twice produces the same result
 - [ ] Secrets managed via vault, not hardcoded
+- [ ] Docker reload/restart behavior matches `.ai/config.json` when containers are used
 - [ ] Rollback plan exists
 - [ ] Health checks configured
 - [ ] Logs and metrics configured

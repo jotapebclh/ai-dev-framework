@@ -15,6 +15,10 @@
     "database": "",
     "auth": ""
   },
+  "devEnvironment": {
+    "containerization": "",
+    "reloadStrategy": ""
+  },
   "links": {
     "docs": "",
     "api": "",

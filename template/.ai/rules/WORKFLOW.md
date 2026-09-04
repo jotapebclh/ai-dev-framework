@@ -4,6 +4,22 @@ These rules govern the development process: Git, CI/CD, and releases.
 
 ---
 
+## 0. Task Lifecycle and Validation Gate
+
+Use this lifecycle for implementation work:
+
+```text
+backlog.md -> current.md (In Progress) -> current.md (Validation) -> completed.md
+```
+
+- Move a task from backlog to `current.md` when work begins
+- After implementation, do not mark the task completed immediately unless validation/testing is explicitly complete
+- Set `current.md` status to `Validation` when the work is ready for user testing
+- In `Validation`, record what changed, what needs to be tested, checks already run, and the exact next confirmation needed
+- Ask the user whether to finalize after they report the validation result
+- Move to `completed.md` and reset `current.md` only after the user confirms validation/testing passed or explicitly asks to finalize
+- If validation fails, move the task back to `In Progress` or `Blocked` and continue from the failed check
+
 ## 1. Git Branching Model
 
 Use **GitHub Flow** (simplified, trunk-based):

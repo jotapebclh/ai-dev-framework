@@ -2,6 +2,7 @@
 
 <!--
 Source of truth for completed tasks.
+Only record a task here after validation/testing is explicitly complete.
 Keep entries compact and grouped by date. Do not duplicate the session handoff.
 -->
 

@@ -19,7 +19,7 @@ No handoffs recorded yet.
 
 **Focus:** one-line request or goal.
 
-**Outcome:** completed / partial / blocked. If completed, reference the entry in `.ai/tasks/completed.md`.
+**Outcome:** completed / validation / partial / blocked. If completed, reference the entry in `.ai/tasks/completed.md`.
 
 **Next:** one concrete next action, or "None".
 

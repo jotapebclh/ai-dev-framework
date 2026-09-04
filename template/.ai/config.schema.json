@@ -27,6 +27,14 @@
         "auth": { "type": "string" }
       }
     },
+    "devEnvironment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "containerization": { "type": "string" },
+        "reloadStrategy": { "type": "string" }
+      }
+    },
     "links": {
       "type": "object",
       "additionalProperties": true,

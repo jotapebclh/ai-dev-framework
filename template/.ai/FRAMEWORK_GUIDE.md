@@ -53,6 +53,7 @@ Edit the fields:
 - `project.language`, `project.runtime`, `project.framework`
 - `project.packageManager`, `project.testFramework`, `project.lintTool`
 - `architecture.pattern`, `architecture.database`, `architecture.auth`
+- `devEnvironment.containerization`, `devEnvironment.reloadStrategy` when Docker or local containers are used
 - `standards.*` if you already have coding, formatting, or testing conventions
 
 ### 2. `.ai/ref/dependencies.md` — Key Dependencies
@@ -92,6 +93,10 @@ These files contain universal defaults. Review and adapt them to your project.
 
 4. Work as you normally would — the AI updates task files only when the state meaningfully changes
 
+5. When implementation is ready for your test, the AI should mark the task as `Validation`, summarize what changed, and list what needs to be tested
+
+6. After you confirm validation/testing passed, the AI moves the task to `completed.md` and resets `current.md`
+
 ### Collaborating With The AI
 
 The framework asks the AI to collaborate actively without turning every task into a planning meeting.
@@ -100,7 +105,7 @@ The framework asks the AI to collaborate actively without turning every task int
 |--------|-------------------|
 | Before work | Ask 1-3 focused questions when ambiguity changes architecture, API, schema, security, UX, dependencies, tests, scope, or priority. |
 | During work | Send short updates only for meaningful milestones, risks, trade-offs, or blockers. |
-| After work | Include `Prompt Feedback` only when there is a useful way to improve future prompts. |
+| After work | Mark work as `Validation` before completion unless testing was explicitly completed. Include `Prompt Feedback` only when useful. |
 
 You can ask for more or less guidance directly:
 
@@ -202,8 +207,8 @@ The framework becomes smarter over time:
 | `.ai/rules/LEARNED.md` | AI records reusable conventions, gotchas, provider quirks, and testing patterns |
 | `.ai/decisions/` | AI records durable technical decisions with lasting trade-offs |
 | `.ai/tasks/sessions.md` | AI writes short handoffs only when continuity matters |
-| `.ai/tasks/current.md` | AI keeps active task state only; completed work is cleared from it |
-| `.ai/tasks/completed.md` | AI records finished tasks as the canonical completion ledger |
+| `.ai/tasks/current.md` | AI keeps active and validation task state only; completed work is cleared from it |
+| `.ai/tasks/completed.md` | AI records finished tasks as the canonical completion ledger after validation/testing is complete |
 | `.ai/skills/` | You add optional playbooks when recurring specialized workflows appear |
 
 ### Long-Term Memory Rules
@@ -214,7 +219,7 @@ The AI should promote durable knowledge out of task logs:
 |---------------------|------------------|
 | Architecture, API, data, auth, provider, cache, CI, deployment, or cross-cutting contract decision | `.ai/decisions/` |
 | Reusable convention, gotcha, provider quirk, testing pattern, performance/security note, or local tooling constraint | `.ai/rules/LEARNED.md` |
-| Stack, runtime, framework, auth, database, or standard change | `.ai/config.json` |
+| Stack, runtime, framework, auth, database, dev environment, containerization/reload strategy, or standard change | `.ai/config.json` |
 | Dependency, external service, env var, port, secret name, or command change | `.ai/ref/` |
 
 `sessions.md` is not long-term memory. It should contain only short handoffs for continuity.
@@ -227,7 +232,7 @@ The AI should promote durable knowledge out of task logs:
 |---------|----------------------|
 | Start working | `Read AI_CONTEXT.md` |
 | Plan a feature | `Plan the implementation of X. Check the rules first.` |
-| Report progress | `Update current.md. If this is done, move it to completed.md and reset current.md.` |
+| Report progress | `Update current.md. If implementation is ready, mark Validation with what changed and what to test. If validation passed, move it to completed.md and reset current.md.` |
 | Fix a bug | `Fix X. Load security rules and check for vulnerabilities.` |
 | Review decisions | `What decisions have been made about X?` |
 | Get prompt feedback | `At the end, tell me how I could improve this prompt.` |

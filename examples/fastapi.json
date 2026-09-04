@@ -18,5 +18,9 @@
     "docs": "https://fastapi.tiangolo.com",
     "api": "https://api.example.com/docs",
     "dbSchema": "alembic/versions/"
+  },
+  "devEnvironment": {
+    "containerization": "Docker Compose",
+    "reloadStrategy": "Uvicorn reload for source changes; restart/rebuild containers for dependency, Dockerfile, or environment changes"
   }
 }

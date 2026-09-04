@@ -67,20 +67,32 @@ Load only when needed:
 ### During the Session
 - Update `.ai/tasks/current.md` after meaningful milestones, not after every small edit
 - If blocked, record the blocker and the next unblock step in `current.md`
+- If implementation is ready for user testing, set `current.md` status to `Validation` instead of completing it
 - Give short progress updates at meaningful milestones, trade-offs, risks, or blockers
 - Follow the rules in the loaded files strictly
 - Follow the skill's process and output format only if a skill was loaded
 
+### Validation Gate
+
+- Do not complete implementation tasks immediately after coding unless validation is explicitly complete
+- When implementation is ready but user testing is pending, update `.ai/tasks/current.md` with `Status: Validation`
+- Include a compact validation summary in `current.md`: what changed, what should be tested, commands already run, and any known risks
+- In the final response, say the task is ready for validation and ask whether to finalize after the user confirms the test result
+- Move the task to `.ai/tasks/completed.md` only after the user explicitly confirms validation/testing passed or explicitly asks to finalize
+- If the user explicitly delegated all validation to the AI and all required tests/checks passed, the AI may complete the task without asking again
+- If validation fails, move the task back to `In Progress` or `Blocked`, record the failed check briefly, and continue fixing or ask for the blocker details
+
 ### On Session End
 1. If work remains, update `.ai/tasks/current.md` with active status, next step, and blockers
-2. If the task is completed, append a concise entry to `.ai/tasks/completed.md`, then reset `.ai/tasks/current.md` to `Idle`
-3. Append a short handoff to `.ai/tasks/sessions.md` only when it helps future continuity. Do not duplicate completed task details already stored in `completed.md`.
+2. If implementation is ready but validation is pending, set `.ai/tasks/current.md` to `Validation`, summarize what changed and what to test, and do not write to `completed.md`
+3. If the task was explicitly validated/tested successfully, append a concise entry to `.ai/tasks/completed.md`, then reset `.ai/tasks/current.md` to `Idle`
+4. Append a short handoff to `.ai/tasks/sessions.md` only when it helps future continuity. Do not duplicate completed task details already stored in `completed.md`.
    - Date and session title
    - Focus/request in one line
    - Outcome in one line, with a reference to `completed.md` if completed
    - Next step and blockers
-4. Run the Long-Term Memory Check below. Promote durable knowledge to `LEARNED.md`, `decisions/`, `.ai/config.json`, or `.ai/ref/` as appropriate.
-5. Do not leave durable decisions only in `sessions.md`; handoffs are short-lived.
+5. Run the Long-Term Memory Check below. Promote durable knowledge to `LEARNED.md`, `decisions/`, `.ai/config.json`, or `.ai/ref/` as appropriate.
+6. Do not leave durable decisions only in `sessions.md`; handoffs are short-lived.
 
 ---
 
@@ -94,7 +106,7 @@ Use this routing table:
 |-------------|----------|--------------|
 | Durable decision | `.ai/decisions/ADR-NNN-*.md` and `.ai/decisions/INDEX.md` | Architecture, API contract, data model, migration strategy, auth/security model, external integration/provider, cache/consistency strategy, CI/toolchain, deployment, or cross-cutting frontend/backend contract changes. |
 | Reusable lesson | `.ai/rules/LEARNED.md` | Project convention, gotcha, provider/API quirk, testing pattern, validation rule, performance/security note, local tooling constraint, or any fact that would save future rediscovery. |
-| Project identity or stack | `.ai/config.json` | Language, runtime, framework, package manager, test/lint tools, architecture summary, auth, database, or standards change. |
+| Project identity or stack | `.ai/config.json` | Language, runtime, framework, package manager, test/lint tools, architecture summary, auth, database, dev environment, containerization/reload strategy, or standards change. |
 | Operational reference | `.ai/ref/dependencies.md` or `.ai/ref/env.md` | Dependency/version, external service, endpoint, environment variable, port, secret name, or command changes. |
 | Task history only | `.ai/tasks/completed.md` | One-off implementation detail that does not guide future decisions. |
 
@@ -163,6 +175,9 @@ No active task.
 
 ## Acceptance Criteria
 None while Idle.
+
+## Validation
+Not applicable while Idle.
 
 ## State
 | Field | Value |

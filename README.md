@@ -39,8 +39,8 @@ Unlike static rule files, this framework becomes smarter over time:
 | `LEARNED.md` | AI records reusable conventions, gotchas, provider quirks, and testing patterns |
 | `decisions/` | AI records durable technical decisions with lasting trade-offs |
 | `sessions.md` | AI keeps short handoffs only when continuity matters |
-| `completed.md` | AI records the canonical list of finished tasks |
-| `tasks/` | AI tracks active, pending, and completed work without duplicating logs |
+| `completed.md` | AI records the canonical list of finished tasks after validation |
+| `tasks/` | AI tracks pending, active, validation, and completed work without duplicating logs |
 
 ## Structure
 
@@ -62,9 +62,9 @@ project/
     │   └── LEARNED.md            # Grows with the project
     │
     ├── tasks/
-    │   ├── current.md            # Active work only; reset to Idle when done
+    │   ├── current.md            # Active/validation work only; reset to Idle when done
     │   ├── backlog.md            # What will be done
-    │   ├── completed.md          # Canonical list of finished tasks
+    │   ├── completed.md          # Canonical list of validated finished tasks
     │   └── sessions.md           # Short continuity handoffs
     │
     ├── decisions/                # Architecture Decision Records

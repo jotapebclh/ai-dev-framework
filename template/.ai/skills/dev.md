@@ -23,13 +23,16 @@
 5. Implement following STANDARDS.md and ARCHITECTURE.md
 6. Write or update tests alongside the implementation
 7. Run linter and type checker before finishing
-8. Update `.ai/tasks/current.md` only at meaningful milestones
+8. If user validation is pending, set `.ai/tasks/current.md` to `Validation` with what changed and what to test
+9. Move to `.ai/tasks/completed.md` only after validation/testing is explicitly complete
+10. Update `.ai/tasks/current.md` only at meaningful milestones
 
 ## Output Format
 
 - Explain the approach before writing code
 - Present code in logical, reviewable chunks
 - Summarize what was changed and why
+- When ready for validation, list what the user should test and ask whether to finalize after testing
 
 ## Checklist
 

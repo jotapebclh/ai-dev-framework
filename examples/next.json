@@ -18,5 +18,9 @@
     "docs": "https://nextjs.org/docs",
     "api": "https://api.example.com",
     "dbSchema": "prisma/schema.prisma"
+  },
+  "devEnvironment": {
+    "containerization": "Docker Compose",
+    "reloadStrategy": "Hot reload for source changes; restart/rebuild containers for dependency, Dockerfile, or environment changes"
   }
 }
